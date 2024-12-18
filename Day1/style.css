@@ -1,0 +1,153 @@
+.top ul{
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+.top{
+    height: 50px;
+    background-color: lightgrey;
+}
+.top ul li{
+    text-decoration: none;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.top ul li button{
+    background-color:white;
+    color: black;
+    border: none;
+    width: 120px;
+    height: 30px;
+    border-radius: 50px;
+    &:hover{
+        color: white;
+        background-color: black;
+        border:white solid 2px;
+    }
+}
+.main{
+    /* background-color: lightgreen; */
+}
+#About{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+}
+.abts{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+} 
+.abts card{
+    margin: 15px;
+}
+
+.home{
+    background: url("./asserts/bg.jpg");
+    height:900px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+
+.contact{
+    background: url("./asserts/abtus.jpg");
+    height:900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+    background-blend-mode:soft-light;
+}
+/* .home h1{
+    color: white;
+    animation:animate 4s infinite;
+}
+
+@keyframes animate{
+    0%{
+        transform: scale(0.5);
+        }
+        100%{
+            transform: scale(1);
+            }
+} */
+
+.home h1 span {
+    color: white;
+    margin: -5px;
+    font-size: 75px;
+    display: inline-block;
+    opacity: 0; 
+    transform: translateY(20px); 
+    animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.home h1 span:nth-child(1) { animation-delay: 0.1s; }
+.home h1 span:nth-child(2) { animation-delay: 0.2s; }
+.home h1 span:nth-child(3) { animation-delay: 0.3s; }
+.home h1 span:nth-child(4) { animation-delay: 0.4s; }
+.home h1 span:nth-child(5) { animation-delay: 0.5s; }
+.home h1 span:nth-child(6) { animation-delay: 0.6s; }
+.home h1 span:nth-child(7) { animation-delay: 0.7s; }
+
+
+
+
+.gradient-custom-2 {
+    background: #fccb90;
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    } 
+    @media (min-width: 768px) {
+    .gradient-form {
+    height: 100vh !important;
+    }
+    }
+    @media (min-width: 769px) {
+    .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    }
+    }
+
+    .login{
+        background: url("./asserts/OIP.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height:900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-attachment: fixed;
+        background-blend-mode:soft-light;
+    }
+
+    .cap{
+        text-align: center;
+        
+    }
+    .cap span{
+        margin: -8px;
+    }
