@@ -6,8 +6,7 @@ function  getUserDetails() {
     return{
         ...userDetails,
         ...userAddress,
-        ...userPreferences,
-        name
+        ...userPreferences,    
     }
 }
 
