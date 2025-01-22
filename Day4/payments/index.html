@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+<body>
+    <h2>login</h2>
+    <input type="text" placeholder="name" id="rname">
+    <input type="text" placeholder="email" id="remail">
+    <input type="password" name="" id="rpassword" placeholder="password">
+    <button id="register" onclick="register(login)">Login</button>
+
+    <!-- <h2>Login</h2>
+    <input type="text" placeholder="email" id="lmail">
+    <input type="password" placeholder="password" id="lpassword">
+    <button id="login">Login</button> -->
+
+    <div class="balance">
+        <h1 id="bal">balance</h1>
+    </div>
+
+    <div class="send" style="display: flex;flex-direction: row;">
+        <div class="card" style="margin: 50px;border: 2px solid black;padding: 25px;cursor: pointer;"><h1>CARD</h1>
+            <input type="text" placeholder="card number" id="card">
+            <input type="text" placeholder="CVV" id="cvv">
+            <input type="number" placeholder="amount" id="amount" value="0">
+            <button onclick="payment(send)">Pay</button>
+        </div>
+        <div class="upi" style="margin: 50px;border: 2px solid black;padding: 25px;cursor: pointer;"><h1>UPI</h1>
+        <input type="text" placeholder="VPA" id="vpa">
+        <input type="number" placeholder="amount" id="amount1" value="0">
+        <button onclick="payment(send)">Pay</button>
+    </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
