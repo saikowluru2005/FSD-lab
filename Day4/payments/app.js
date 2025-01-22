@@ -25,7 +25,7 @@ else{
 // callback(amt,remail)
 }
 
-function payment(callback){
+function payment(){
     console.log(amt)
     console.log(remail)
     let card=document.getElementById("card").value
@@ -74,14 +74,14 @@ else{
     },2000)
     
 }
- callback(remail)
+//  callback(remail)
 
 }
 
-function send(remail){
-    setTimeout(function(){
-        document.write(`Balance sent to ${remail.value}`)
-    },3000)
-    // console.log(remail.value)
-}
+// function send(remail){
+//     setTimeout(function(){
+//         document.write(`Balance sent to ${remail.value}`)
+//     },3000)
+//     // console.log(remail.value)
+// }
 
