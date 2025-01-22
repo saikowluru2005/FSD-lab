@@ -12,11 +12,16 @@ amt=23500
 function login(rname,rpassword,remail){
 // let lname=document.getElementById("lname").value
 // let lpassword=document.getElementById("lpassword").value
-
-let bal=document.getElementById("bal")
-// let amt=23500
-bal.innerHTML=amt
-console.log(rname)
+if(remail=="admin@gmail.com" && rpassword=="admin"){
+    alert(`login success, welcome ${rname}`)
+    let bal=document.getElementById("bal")
+    // let amt=23500
+    bal.innerHTML=amt
+    console.log(rname)
+}
+else{
+    alert("Invalid username or password")
+}
 // callback(amt,remail)
 }
 
