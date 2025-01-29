@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="in">
+    <input type="text" placeholder="Enter city name">
+    <button onclick="data()">Show</button>
+</div>
+
+    <div class="details">
+        <div class="name"></div>
+        <div class="min"></div>
+        <div class="max"></div>
+        <div class="humid"></div>
+    </div>
+<div class="charts" style="display: flex;flex-wrap: wrap; align-items: center;justify-content: center;">
+    <div style="width: 800px;">
+        <canvas id="myChart" style="border: lightslategrey solid 5px;padding: 20px;"></canvas>
+      </div>
+      <div style="width: 500px;">
+        <canvas id="myChartpie" style="border: lightslategrey solid 5px;padding: 20px;"></canvas>
+      </div>
+      <div style="width: 800px;">
+        <canvas id="myChartline" style="border: lightslategrey solid 5px;padding: 20px;"></canvas>
+      </div>
+      <div style="width: 800px;">
+        <canvas id="myChartploar" style="border: lightslategrey solid 5px;padding: 20px;"></canvas>
+      </div>
+    </div>
+    <script>
+        let name=document.getElementsByClassName("name")
+        let min=document.getElementsByClassName("min")
+        let max=document.getElementsByClassName("max")
+        let humid=document.getElementsByClassName("humid")
+
+        async function data(){
+            let city=document.querySelector("input").value
+            let key=`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=a274d83dea4433bca415019dc8da10dc`
+            
+            let api=await fetch(key)
+            .then(response => response.json())
+            if(api.cod=="404"){
+                alert("City not found")
+            }
+            console.log(api)
+            let max_temperature=[]
+            let min_temperature=[]
+            let date=[]
+            for(i=0, api.list.length;i<api.list.length;i++){
+            // console.log(api.list[i].main.temp_max)
+            max_temperature.push(api.list[i].main.temp_max)
+            min_temperature.push(api.list[i].main.temp_min)
+            date.push(api.list[i].dt_txt)
+            }
+            console.log(max_temperature);
+            console.log(min_temperature);
+            console.log(date)
+            // console.log(api.main.temp_min)
+            // console.log(api.main.temp_max)
+            // console.log(api.name)
+
+            // name[0].innerHTML = `<h1>Name : ${api.name}</h1>`;
+            // min[0].innerHTML=`<h1>Min temp : ${api.main.temp_min}</h1>`
+            // max[0].innerHTML=`<h1>Max temp : ${api.main.temp_max}</h1>`
+            // humid[0].innerHTML=`<h1>Humidity : ${api.main.humidity}</h1>`
+
+            const ctx = document.getElementById('myChart');
+            const ctx1 = document.getElementById('myChartpie');
+            const ctx2 = document.getElementById('myChartline');
+            const ctx3 = document.getElementById('myChartploar');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: date,
+                datasets: [{
+                    label: 'Min temperature',
+                    data: min_temperature,
+                    borderWidth: 1,
+
+                    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+                }]
+                
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true
+                    }
+                }
+                }
+            });
+
+
+
+
+
+
+            new Chart(ctx1, {
+                type: 'pie',
+                data: {
+                labels: date,
+                datasets: [{
+                    label: 'Max temperature',
+                    data: max_temperature,
+                    borderWidth: 1,
+
+                    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+                }]
+                
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true
+                    }
+                }
+                }
+            });
+
+
+
+
+
+            
+
+            new Chart(ctx2, {
+                type: 'line',
+                data: {
+                labels: date,
+                datasets: [{
+                    label: 'Max temperature',
+                    data: max_temperature,
+                    borderWidth: 1,
+
+                    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+                }]
+                
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true
+                    }
+                }
+                }
+            });
+
+
+
+            new Chart(ctx3, {
+                type: 'polarArea',
+                data: {
+                labels: date,
+                datasets: [{
+                    label: 'Max temperature',
+                    data: max_temperature,
+                    borderWidth: 1,
+
+                    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+                }]
+                
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true
+                    }
+                }
+                }
+            });
+            
+                    }
+       
+    </script>
+</body>
+</html>

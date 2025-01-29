@@ -1,0 +1,41 @@
+body{
+    background-color: rgb(0, 0, 32);
+}
+
+input{
+    background-color: lightgrey;
+    height: 50px;
+    width: 400px;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 20px;
+}
+button{
+    background-color: lightgreen;
+    width: 100px;
+    height: 50px;
+    border:none;
+    border-radius: 50px;
+}
+
+/* .charts{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.charts #myChart canvas{
+    width: 8000px;
+    padding: 50px;
+}
+.charts #myChartpie canvas{
+    width: 300px;
+    padding: 50px;
+} */
+
+.in{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}

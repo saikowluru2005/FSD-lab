@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Enter city name">
+    <button onclick="data()">Show</button>
+
+    <div class="details">
+        <div class="name"></div>
+        <div class="min"></div>
+        <div class="max"></div>
+        <div class="humid"></div>
+    </div>
+    <script>
+        let name=document.getElementsByClassName("name")
+        let min=document.getElementsByClassName("min")
+        let max=document.getElementsByClassName("max")
+        let humid=document.getElementsByClassName("humid")
+
+        async function data(){
+            let city=document.querySelector("input").value
+            let key=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a274d83dea4433bca415019dc8da10dc`
+            
+            let api=await fetch(key)
+            .then(response => response.json())
+            if(api.cod=="404"){
+                alert("City not found")
+            }
+            console.log(api)
+            console.log(api.main.humidity)
+            console.log(api.main.temp_min)
+            console.log(api.main.temp_max)
+            console.log(api.name)
+
+            name[0].innerHTML = `<h1>Name : ${api.name}</h1>`;
+            min[0].innerHTML=`<h1>Min temp : ${api.main.temp_min}</h1>`
+            max[0].innerHTML=`<h1>Max temp : ${api.main.temp_max}</h1>`
+            humid[0].innerHTML=`<h1>Humidity : ${api.main.humidity}</h1>`
+        }
+       
+    </script>
+</body>
+</html>
